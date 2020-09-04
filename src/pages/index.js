@@ -97,7 +97,7 @@ export default function Home() {
         <a href="https://github.com/renchris/spectrogram" target="_blank">
           <img alt="Spectrogram" src={image} />
         </a>
-        <h1 className="image-title">Specotgram</h1>
+        <h1 className="image-title">Spectrogram</h1>
       </div>
       <h1 id="clickHeader" onClick={setupCanvas}>
         Click to Start
