@@ -5,7 +5,7 @@
   </a>
 </p>
 <h1 align="center">
-  Spectogram
+  Spectrogram
 </h1>
 
 A real-time audio processing module that records audio from the microphone and visualizes the loudness of the audio signal.
