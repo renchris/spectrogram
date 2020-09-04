@@ -6,14 +6,14 @@
 
 module.exports = {
   /* Your site config here */
-  pathPrefix: "/spectogram",
+  pathPrefix: "/spectrogram",
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Spectogram`,
         short_name: `Spec`,
-        start_url: `/`,
+        start_url: `.`,
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,

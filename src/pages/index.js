@@ -1,14 +1,11 @@
 import React from "react"
 
 import layoutStyles from "./index.css"
-
 import image from "../images/wave.svg"
 
 var canvasActivated = false
 
 function setupCanvas() {
-  console.log("That's cool")
-
   if (canvasActivated) {
     return
   }
@@ -16,17 +13,14 @@ function setupCanvas() {
 
   document.getElementById("clickHeader").hidden = true
 
-  // //cavnas
+  //cavnas
   var canvas = document.getElementById("specCanvas")
-  console.log(canvas)
-  // //2D context of canvas
+
+  //2D context of canvas
   var contextOfCanvas = canvas.getContext("2d")
 
   const canvasWidth = (canvas.width = window.innerWidth)
   const canvasHeight = (canvas.height = window.innerHeight)
-
-  console.log(canvasWidth)
-  console.log(canvasHeight)
 
   //connect our stream to our analyzer, and ask our anaylzer for specific types of data
   //ie frequency spectrum at our current point in time
@@ -41,10 +35,10 @@ function setupCanvas() {
 
   //takes our audio stream
   function process(audioStream) {
-    console.log(audioStream)
     //wraps stream in a source object allows us to connect our stream to our analyzer
     const audioSource = audioContext.createMediaStreamSource(audioStream)
     audioSource.connect(analyser)
+
     //array of audio data with  has length of audioContext.fftSize
     const audioData = new Uint8Array(analyser.frequencyBinCount)
     const dataLength = audioData.length
@@ -60,6 +54,7 @@ function setupCanvas() {
     function loop() {
       //call again on next frame
       window.requestAnimationFrame(loop)
+
       //take data and move it one pixel to the left
       let imageData = contextOfCanvas.getImageData(
         1,
@@ -67,16 +62,20 @@ function setupCanvas() {
         canvasWidth - 1,
         canvasHeight
       )
+
       contextOfCanvas.fillRect(0, 0, canvasWidth, canvasHeight)
       contextOfCanvas.putImageData(imageData, 0, 0)
+
       //analyser will populate and transform data array
       analyser.getByteFrequencyData(audioData)
-      console.log(dataLength)
+
       for (let i = 0; i < dataLength; i++) {
         let ratio = audioData[i] / 255
+
         let hue = (ratio * 120 + 280) % 360
         let saturation = "100%"
         let lightness = 10 + 70 * ratio + "%"
+
         contextOfCanvas.beginPath()
         contextOfCanvas.strokeStyle = `hsl(${hue}, ${saturation}, ${lightness})`
         contextOfCanvas.lineWidth = 15
