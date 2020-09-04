@@ -1,0 +1,55 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+.image-div {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 10vh;
+  place-content: center;
+  vertical-align: middle;
+  top: 10px;
+}
+
+img {
+  position: relative;
+  height: 60px;
+  object-fit: contain;
+  z-index: 10;
+}
+
+.image-title {
+  position: absolute;
+  font-family: sans-serif;
+  top: 55.25px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  margin: 0;
+  z-index: 10;
+  color: #24292e;
+}
+
+canvas {
+  border: 3px solid thistle;
+  height: calc(100vh - 128px - 20px);
+  min-height: 90%;
+  width: calc(100% - 7px - 20px);
+  transform: translate(10px, calc(120px + 10px));
+  background-color: hsl(280, 100%, 10%);
+}
+
+h1 {
+  position: absolute;
+  font-family: sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 60px));
+  margin: 0;
+  z-index: 10;
+  color: thistle;
+  user-select: none;
+}
