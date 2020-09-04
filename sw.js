@@ -27,17 +27,17 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-d5e245d2a2a8499f95a5.js"
+    "url": "webpack-runtime-20dce51d4f6570120633.js"
   },
   {
     "url": "framework-8c8d363c63d1a9a80d21.js"
   },
   {
-    "url": "app-b1d963ad16da47cbe13b.js"
+    "url": "app-13e3d6208cd8413af190.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "73c0390b241ad368cdce7734a9af440f"
+    "revision": "ba577322f77579cfed7d1cacca84059a"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-0e7509a3429803f7697c.js"
@@ -48,14 +48,14 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "0179733e5eda6e85fa3eb6bffc87d1df"
+    "revision": "ec0376ca306585ff530c02e2dfdb98d7"
   },
   {
     "url": "polyfill-05ca266ba135f47d33f0.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "6080621f245fbd25807b17c6d82c25c2"
+    "revision": "af7763afa4f9f9ac9cda04f6bc04a658"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -142,12 +142,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/spectogram`), ``)
+  pathname = pathname.replace(new RegExp(`^/spectrogram`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/spectogram/app-b1d963ad16da47cbe13b.js`))) {
+  if (!resources || !(await caches.match(`/spectrogram/app-13e3d6208cd8413af190.js`))) {
     return await fetch(event.request)
   }
 
@@ -160,7 +160,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/spectogram/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/spectrogram/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
